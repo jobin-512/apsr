@@ -4,6 +4,7 @@
     import Nextlevel from "$lib/components/home/Nextlevel.svelte";
     import Digitaladvertising from "$lib/components/home/Digitaladvertising.svelte";
     import Whatwedo from "$lib/components/home/Whatwedo.svelte";
+    import Testimonial from "$lib/components/home/Testimonial.svelte";
 </script>
 
 <Hero/>
@@ -11,3 +12,4 @@
 <Nextlevel/>
 <Digitaladvertising/>
 <Whatwedo/>
+<Testimonial/>

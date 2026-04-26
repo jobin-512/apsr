@@ -1,6 +1,10 @@
 <script>
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
+  import s1 from "$lib/assets/home/s1.webp"
+  import s2 from "$lib/assets/home/s2.webp"
+  import s3 from "$lib/assets/home/s3.webp"
+  import s4 from "$lib/assets/home/s4.webp"
 
   /**
      * @type {Element}
