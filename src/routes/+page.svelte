@@ -5,11 +5,13 @@
     import Digitaladvertising from "$lib/components/home/Digitaladvertising.svelte";
     import Whatwedo from "$lib/components/home/Whatwedo.svelte";
     import Testimonial from "$lib/components/home/Testimonial.svelte";
+    import Technology from "$lib/components/home/Technology.svelte";
 </script>
 
 <Hero/>
 <Datadriven/>
 <Nextlevel/>
 <Digitaladvertising/>
+<Technology/>
 <Whatwedo/>
 <Testimonial/>

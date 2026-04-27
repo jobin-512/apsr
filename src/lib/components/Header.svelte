@@ -45,8 +45,8 @@
 
   <!-- Ambient glow blobs -->
   <div class="pointer-events-none absolute inset-0 z-0">
-    <div class="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full bg-[#3aff00] opacity-10 blur-[80px]"></div>
-    <div class="absolute bottom-[0%] left-[10%] w-[400px] h-[400px] rounded-full bg-[#0a2a00] opacity-60 blur-[100px]"></div>
+    <div class="absolute top-[10%] right-[5%] w-75 h-75 rounded-full bg-[#3aff00] opacity-10 blur-[80px]"></div>
+    <div class="absolute bottom-[0%] left-[10%] w-100 h-100 rounded-full bg-[#0a2a00] opacity-60 blur-[100px]"></div>
   </div>
 
   <!-- Navbar -->
@@ -90,7 +90,7 @@
         <!-- Dropdown panel -->
         {#if servicesOpen}
           <div
-            class="top-full left-1/2 -translate-x-1/2 mt-4 w-[520px] absolute "
+            class="top-full left-1/2 -translate-x-1/2 mt-4 w-130 absolute "
             transition:slide={{ duration: 220, axis: 'y' }}
           >
             <!-- Arrow notch -->
@@ -307,15 +307,11 @@
   :global(.font-dm-serif) {
     font-family: 'DM Serif Display', serif;
   }
-
+:global(html, body) {
+  overflow-x: hidden;
+}
   .hero-wrapper {
     font-family: 'Syne', sans-serif;
-  }
-
-  /* Ensure dropdown floats above hero content */
-  .dropdown-panel {
-    position: absolute;
-    z-index: 1000;  
   }
 
   @keyframes fade-up {
@@ -338,13 +334,5 @@
       opacity: 1;
       transform: translateX(0);
     }
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-fade-left {
-    animation: fade-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 </style>
