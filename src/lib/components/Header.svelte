@@ -7,18 +7,27 @@
   let mobileOpen = $state(false);
   let servicesOpen = $state(false);
   let mobileServicesOpen = $state(false);
+  let PackagesOpen = $state(false);
+  let mobilePackagesOpen = $state(false);
 
   const serviceItems = [
-    { icon: '📈', label: 'Marketing Strategy',    desc: 'Data-led go-to-market plans',    href: '/services/marketing-strategy' },
-    { icon: '📣', label: 'Digital Advertising',   desc: 'Meta, Google, TikTok & more',    href: '/services/digital-advertising' },
-    { icon: '🎨', label: 'Content & Creative',    desc: 'Campaigns that stop the scroll',  href: '/services/content-creative' },
+    { icon: '📈', label: 'Mobile App',    desc: 'Data-led go-to-market plans',    href: '/services/mobile-app' },
+    { icon: '📣', label: 'Virtual Assistant',   desc: 'Meta, Google, TikTok & more',    href: '/services/virtual-assistant' },
     { icon: '💻', label: 'Web Design & Dev',      desc: 'Fast, beautiful, conversion-led', href: '/services/web-design' },
     { icon: '🔍', label: 'SEO & Growth',          desc: 'Organic visibility at scale',     href: '/services/seo-growth' },
-    { icon: '📊', label: 'Analytics & CRO',       desc: 'Turn data into decisions',        href: '/services/analytics-cro' },
+  ];
+
+  const packageItems = [
+    { icon: '📦', label: 'SEO Packages',    desc: 'Essential features for small businesses',    href: '/packages/seo-packages' },
+    { icon: '💼', label: 'Website Packages',   desc: 'Advanced tools for growing companies',    href: '/packages/website-packages' },
+    { icon: '🚀', label: 'Mobile App Packages',    desc: 'Custom solutions for large organizations',  href: '/packages/mobile-app' },
   ];
 
   function toggleMenu() { mobileOpen = !mobileOpen; }
-  function closeMenu()  { mobileOpen = false; mobileServicesOpen = false; }
+  function closeMenu()  { mobileOpen = false; mobileServicesOpen = false; mobilePackagesOpen = false; }
+
+
+
 
   onMount(() => { mounted = true; });
 
@@ -30,6 +39,7 @@
   function openServices() {
     clearTimeout(closeTimeout);
     servicesOpen = true;
+    PackagesOpen = false;
   }
 
   function closeServices() {
@@ -37,11 +47,23 @@
       servicesOpen = false;
     }, 120); // small delay = smooth UX
   }
+
+  function openPackages() {
+    clearTimeout(closeTimeout);
+    PackagesOpen = true;
+    servicesOpen = false;
+  }
+
+  function closePackages  () {
+    closeTimeout = setTimeout(() => {
+      PackagesOpen = false;
+    }, 120); // small delay = smooth UX
+  }
 </script>
 
 
 <!-- Hero Section -->
-<section class="hero-wrapper sticky top-0 z-50 bg-[#050f05] overflow-visible font-syne">
+<section class="hero-wrapper sticky top-0 z-100 bg-[#050f05] overflow-hidden md:overflow-visible font-syne border-2 ">
 
   <!-- Ambient glow blobs -->
   <div class="pointer-events-none absolute inset-0 z-0">
@@ -50,7 +72,7 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="relative z-30 flex items-center justify-between px-6 md:px-14 py-5">
+  <nav class="sticky top-0 z-100 flex items-center justify-between px-6 md:px-14 py-5 bg-[#050f05]/80 backdrop-blur-xl">
 
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2 group shrink-0">
@@ -143,8 +165,81 @@
         {/if}
       </div>
 
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <!-- svelte-ignore event_directive_deprecated -->
+      <div
+        class="relative"
+        on:mouseenter={openPackages}
+        on:mouseleave={closePackages}
+      >
+        <!-- Trigger -->
+        <button
+          class="flex items-center gap-1.5 text-[#8aad78] text-xs font-medium tracking-widest uppercase hover:text-[#c8ff00] transition-colors duration-300 outline-none"
+          aria-haspopup="true"
+          aria-expanded={PackagesOpen}
+        >
+          Packages
+          <svg
+            class="w-3 h-3 transition-transform duration-300"
+            class:rotate-180={PackagesOpen}
+            viewBox="0 0 12 12" fill="none"
+          >
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown panel -->
+        {#if PackagesOpen}
+          <div
+            class="top-full left-1/2 -translate-x-1/2 mt-4 w-130 absolute "
+            transition:slide={{ duration: 220, axis: 'y' }}
+          >
+            <!-- Arrow notch -->
+            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-2 overflow-hidden">
+              <div class="w-3 h-3 bg-[#0d1a0b] border-l border-t border-[#2a5a10] rotate-45 mx-auto mt-1"></div>
+            </div>
+
+            <div class="bg-[#0d1a0b] border border-[#2a5a10] rounded-2xl p-4 shadow-[0_24px_60px_rgba(0,0,0,0.6)]">
+              <!-- Header row -->
+
+              <!-- package grid -->
+              <div class="grid grid-cols-2 gap-1.5 ">
+                {#each packageItems as svc}
+                  <a
+                    href={svc.href}
+                    class="group/item flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-[#1a3a00]/60 transition-all duration-200"
+                  >
+                    <span class="text-lg leading-none mt-0.5 shrink-0">{svc.icon}</span>
+                    <div class="min-w-0">
+                      <p class="text-white text-xs font-semibold tracking-wide group-hover/item:text-[#c8ff00] transition-colors duration-200 truncate">
+                        {svc.label}
+                      </p>
+                      <p class="text-[#4a6a42] text-[10px] leading-snug mt-0.5 truncate">{svc.desc}</p>
+                    </div>
+                    <svg class="w-3 h-3 text-[#2a5a10] shrink-0 mt-0.5 ml-auto opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition-all duration-200" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                {/each}
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="mt-3 pt-3 border-t border-[#1a3a00] px-2 flex items-center justify-between">
+                <p class="text-[#3a5a32] text-[10px]">Not sure where to start?</p>
+                <a
+                  href="/get-started"
+                  class="inline-flex items-center gap-1.5 bg-[#c8ff00] text-[#050f05] font-bold text-[10px] tracking-widest uppercase px-4 py-2 rounded-full hover:bg-white transition-colors duration-200"
+                >
+                  Free Consultation
+                </a>
+              </div>
+            </div>
+          </div>
+        {/if}
+      </div>
+
       <!-- Other links -->
-      {#each ['Work', 'Blog', 'About', 'Contact'] as link}
+      {#each ['Blog', 'About', 'Contact'] as link}
         <a
           href="/{link.toLowerCase()}"
           class="text-[#8aad78] text-xs font-medium tracking-widest uppercase hover:text-[#c8ff00] transition-colors duration-300"
@@ -163,6 +258,7 @@
     </a>
 
     <!-- ── Mobile Hamburger ── -->
+    <!-- svelte-ignore event_directive_deprecated -->
     <button
       on:click={toggleMenu}
       class="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-[5px]"
@@ -198,7 +294,7 @@
 
   <!-- ── Mobile Drawer ── -->
   <div
-    class="fixed top-0 right-0 z-40 h-full w-[80vw] max-w-xs bg-[#070f07] border-l border-[#1a3a00] flex flex-col pt-24 pb-10 md:hidden overflow-y-auto transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    class="fixed top-0 right-0 z-1000 h-full w-[80vw] max-w-xs bg-[#070f07] border-l border-[#1a3a00] flex flex-col pt-24 pb-10 md:hidden overflow-y-auto transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
     class:translate-x-0={mobileOpen}
     class:translate-x-full={!mobileOpen}
     aria-hidden={!mobileOpen}
@@ -259,10 +355,53 @@
             </li>
           </ul>
         {/if}
+
+      </li>
+
+      <li>
+        <button
+          on:click={() => mobilePackagesOpen = !mobilePackagesOpen}
+          class="w-full flex items-center justify-between py-4 border-b border-[#1a3a00] text-[#8aad78] text-sm font-semibold tracking-[0.2em] uppercase transition-colors duration-200"
+          class:text-[#c8ff00]={mobilePackagesOpen}
+        >
+          Packages
+          <svg
+            class="w-3.5 h-3.5 transition-transform duration-300 shrink-0"
+            class:rotate-180={mobilePackagesOpen}
+            viewBox="0 0 12 12" fill="none"
+          >
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Mobile packages sub-list -->
+        {#if mobilePackagesOpen}
+          <ul
+            class="bg-[#0a1a08] rounded-xl mx-0 my-2 overflow-hidden border border-[#1a3a00]"
+            transition:slide={{ duration: 280 }}
+          >
+            {#each packageItems as svc, si}
+              <li>
+                <a
+                  href={svc.href}
+                  on:click={closeMenu}
+                  class="flex items-center gap-3 px-4 py-3 hover:bg-[#1a3a00]/60 transition-colors duration-200 border-b border-[#1a3a00] last:border-b-0"
+                >
+                  <span class="text-base shrink-0">{svc.icon}</span>
+                  <div>
+                    <p class="text-white text-xs font-semibold">{svc.label}</p>
+                    <p class="text-[#4a6a42] text-[10px] leading-snug">{svc.desc}</p>
+                  </div>
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+
       </li>
 
       <!-- Other nav links -->
-      {#each ['Work', 'Blog', 'About', 'Contact'] as link, i}
+      {#each ['Blog', 'About', 'Contact'] as link, i}
         <li style="transition-delay:{mobileOpen ? (i + 1) * 60 : 0}ms">
           <a
             href="/{link.toLowerCase()}"
@@ -307,9 +446,6 @@
   :global(.font-dm-serif) {
     font-family: 'DM Serif Display', serif;
   }
-:global(html, body) {
-  overflow-x: hidden;
-}
   .hero-wrapper {
     font-family: 'Syne', sans-serif;
   }
