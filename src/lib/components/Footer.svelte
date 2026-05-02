@@ -9,9 +9,28 @@
     let footerVisible = $state(false);
 
     const footerLinks = {
-    Services: ['Marketing Strategy', 'Digital Advertising', 'Content & Creative', 'Web Design'],
-    Company:  ['About Us', 'Case Studies', 'Blog', 'Careers'],
-    Connect:  ['Twitter / X', 'LinkedIn', 'Instagram'],
+    Services: [
+      {title:'mobile app',
+        href:"/services/mobile-app"
+      },
+      {title:'Website Development',
+        href:"/services/web-design"
+      },
+      {title:'Virtual Assistant',
+        href:"/services/virtual-assistant"
+      },
+      {title:'SEO',
+        href:"/services/seo-growth"
+      }
+    ],
+    Connect:  [
+      {title:'LinkedIn',
+        href:"https://www.linkedin.com/company/apsr-infotech"
+      },
+      {title:'Instagram',
+        href:"https://www.instagram.com/apsr_infotech/"
+      },
+    ],
   };
 
     onMount(()=>{
@@ -79,7 +98,7 @@
       <div>
         <p class="text-[#3a5a32] text-[10px] tracking-[0.3em] uppercase font-medium mb-5">APSR Infotech</p>
         <ul class="space-y-3">
-          {#each ['Home', 'About', 'Contact', 'Privacy Policy'] as link}
+          {#each ['Services', 'About', 'Contact', 'Privacy Policy'] as link}
             <li>
               <a href="/{link.toLowerCase().replace(/\s+/g,'-')}" class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
                 {link}
@@ -96,14 +115,36 @@
           <ul class="space-y-3">
             {#each links as link}
               <li>
-                <a href="/{link.toLowerCase().replace(/\s+/g,'-')}" class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
-                  {link}
+                <a href="{link.href}" class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
+                  {link.title}
                 </a>
               </li>
             {/each}
           </ul>
         </div>
       {/each}
+
+
+       <div>
+          <p class="text-[#3a5a32] text-[10px] tracking-[0.3em] uppercase font-medium mb-5">Contact</p>
+          <ul class="space-y-3">
+              <li>
+                <a href="tel:+1 4404620956" class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
+                +1 4404620956
+                </a>
+              </li>
+              <li>
+                <a href="mailto:Info@apsrinfotech.com" class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
+                Info@apsrinfotech.com
+                </a>
+              </li>
+              <li>
+                <p  class="text-[#5a7a52] text-xs hover:text-[#c8ff00] transition-colors duration-300">
+                30 N Gould St Ste R Sheridan, WY 82801, United States
+                </p>
+              </li>
+          </ul>
+        </div>
     </div>
 
     <!-- Bottom row: copyright -->
@@ -112,7 +153,7 @@
         © {new Date().getFullYear()} APSR Infotech. All rights reserved.
       </p>
       <div class="flex items-center gap-6">
-        {#each ['Terms', 'Privacy', 'Cookies'] as link}
+        {#each ['Terms', 'Cookies'] as link}
           <a href="/{link.toLowerCase()}" class="text-[#2a4a22] text-[10px] tracking-widest uppercase hover:text-[#5a7a52] transition-colors duration-300">
             {link}
           </a>

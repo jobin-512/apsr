@@ -138,7 +138,7 @@
       <!-- CTA -->
       <div class="flex items-center gap-4">
         <a
-          href="/cases"
+          href="/#"
           class="inline-flex items-center gap-3 bg-[#c8ff00] text-[#050f05] font-bold text-xs tracking-[0.2em] uppercase px-7 py-4 rounded-full hover:bg-white transition-all duration-300 group"
         >
           View Cases
@@ -187,7 +187,7 @@
         A collection of projects we helped accelerate years ahead.
       </p>
       <a
-        href="/cases"
+        href="/#"
         class="inline-flex items-center gap-2 mt-6 border border-[#2a5a10] text-[#8aad78] text-xs tracking-[0.2em] uppercase px-6 py-3 rounded-full hover:border-[#c8ff00] hover:text-[#c8ff00] transition-all duration-300"
       >
         Case Studies
