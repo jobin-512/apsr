@@ -1,7 +1,7 @@
 <script lang="ts">
-import b1 from "$lib/assets/home/s1.webp"
-import b3 from "$lib/assets/home/s2.webp"
-import b2 from "$lib/assets/home/s3.webp"
+import b1 from "$lib/assets/blog/b3.webp"
+import b2 from "$lib/assets/blog/b1.webp"
+import b3 from "$lib/assets/blog/b2.webp"
 
   const blogs = [
     {
@@ -13,20 +13,20 @@ import b2 from "$lib/assets/home/s3.webp"
       slug: "scale-with-seo"
     },
     {
-      title: "Why Your Website Isn’t Converting (And Fixes)",
+      title: "The Best Performing TikTok Ads Creatives",
       desc: "Identify the real reasons behind low conversions and how to fix them.",
       date: "April 2026",
-      category: "Web Design",
+      category: "SEO",
       image: b2,
-      slug: "website-conversion-fixes"
+      slug: "The-Best-Performing-TikTok-Ads-Creatives"
     },
     {
-      title: "Mobile Apps That Actually Generate Revenue",
-      desc: "What separates successful apps from the rest.",
+      title: "Creating Effective Social Media Marketing Strategies",
+      desc: "How to make large returns efectively using social media stratergies",
       date: "March 2026",
-      category: "Mobile App",
+      category: "SMA",
       image: b3,
-      slug: "apps-that-make-money"
+      slug: "Creating-Effective-Social-Media-Marketing-Strategies"
     }
   ];
 </script>
@@ -62,7 +62,7 @@ import b2 from "$lib/assets/home/s3.webp"
             <img
               src={blogs[0].image}
               alt={blogs[0].title}
-              class="w-full h-[320px] object-cover transition duration-500 group-hover:scale-105"
+              class="w-full h-80 object-cover transition duration-500 group-hover:scale-105"
             />
           </div>
 
@@ -109,7 +109,7 @@ import b2 from "$lib/assets/home/s3.webp"
               <img
                 src={blog.image}
                 alt={blog.title}
-                class="w-full h-[200px] object-cover transition duration-500 group-hover:scale-105"
+                class="w-full h-50 object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
 

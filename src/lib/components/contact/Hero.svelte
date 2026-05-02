@@ -33,7 +33,7 @@
       <div class="mt-10 flex flex-col sm:flex-row gap-5">
 
         <a
-          href="#contact-form"
+          href="#get-started-form"
           class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-lime-400 text-black font-semibold tracking-wide hover:bg-white transition"
         >
           Start Your Project

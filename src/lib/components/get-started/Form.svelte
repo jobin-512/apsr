@@ -105,12 +105,43 @@
     if (step > 1) step--;
   }
 
-  function submit() {
-    if (!validateStep()) return;
+async function submit() {
+  if (!validateStep()) return;
 
-    console.log(form);
-    alert("Submitted 🚀");
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert('Submitted successfully 🚀');
+
+      // reset form
+      form = {
+        name: "",
+        email: "",
+        service: "",
+        budget: "",
+        timeline: "",
+        goals: "",
+      };
+
+      step = 1;
+    } else {
+      alert(data.error || 'Something went wrong');
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert('Server error');
   }
+}
 
   function progress() {
     return (step / 4) * 100;

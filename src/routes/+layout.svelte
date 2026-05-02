@@ -17,6 +17,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>Apsr Infotech</title>
 </svelte:head>
 
 <main class="bg-black min-h-screen" in:fade={{ duration: 400, easing: quintOut }} out:fade={{ duration: 300 }}>

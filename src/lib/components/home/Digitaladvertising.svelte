@@ -14,6 +14,7 @@
       img: b1,
       date: 'Mar 2026',
       color: '#c8ff00',
+      i:"The-Best-Performing-TikTok-Ads-Creatives"
     },
     {
       tag: 'Article · 6 min read',
@@ -21,6 +22,7 @@
       img: b2,
       date: 'Feb 2026',
       color: '#c8ff00',
+      i:"Creating-Effective-Social-Media-Marketing-Strategies"
     },
   ];
 
@@ -85,7 +87,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each articles as article, i}
         <a
-          href="/blog/{i}"
+          href="/blog/{article.i}"
           class="group block rounded-2xl overflow-hidden bg-[#080f07] border border-[#1a3a00] hover:border-[#3a6a20] transition-all duration-500"
           class:opacity-100={visible}
           class:translate-y-0={visible}

@@ -98,10 +98,11 @@
             class="w-full bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2 text-[10px] text-[#050f05] placeholder-[#4a6a3a] outline-none focus:bg-white/80 transition-all"
           />
         </div>
-
+        <a href="/contact#get-started-form">
         <button class="w-full bg-[#050f05] text-[#c8ff00] font-bold text-[10px] tracking-[0.15em] uppercase py-3 rounded-xl hover:bg-[#0d2200] transition-colors duration-300">
           Submit →
         </button>
+        </a>
       </div>
 
       <!-- Decorative dot grid -->

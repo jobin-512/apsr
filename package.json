@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@studio-freight/lenis": "^1.0.42",
 		"@tailwindcss/vite": "^4.2.4",
+		"nodemailer": "^8.0.7",
 		"tailwindcss": "^4.2.4"
 	}
 }
